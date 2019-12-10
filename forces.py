@@ -11,8 +11,8 @@ def getForceProjections (x, y, vx, vy, sx, sy, M ):
 	return fx , fy
 
 
-def  getShipNextState(x, y, Vx, Vy, fx, fy):
-
+def  getShipNextState(x, y, Vx, Vy, fx, fy):    # Vx and vx are different 
+                                                 #give him everithig and he will give you what you need 
 	x = x + Vx * t + fx * t * t / 2
 	y = y + Vy * t + fy * t * t / 2
 	vx =  Vx + fx * t

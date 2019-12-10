@@ -15,7 +15,7 @@ class level2 :
     
     end_portal = [1450,400,150,300 ]
     end_portal_image = "end_portal_vertical_100x200.png"    
-    nuber = 2                                                                          # for end portal 1-x 2-y 3-w 4-h 
+    number = 2                                                                          # for end portal 1-x 2-y 3-w 4-h 
 
 
 class level1 :
@@ -34,7 +34,7 @@ class level1 :
     end_portal = [1100,450,200,110 ]
     end_portal_image = "yelqi portal.png"      
     
-    num = 2 
+    number = 2 
 
 
 class level4 :

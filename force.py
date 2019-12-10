@@ -5,9 +5,9 @@ def dist(a, b):
 	r = ((a[0] - b[0]) * (a[0] - b[0]) + (a[1] - b[1]) * (a[1] - b[1]))**0.5
 	return r
 
-def getneareststar(spaceship , stars):
-	
-	A[0] * l.number  # number of stars 
+def getneareststar(spaceship , stars ,l):
+	 
+	A = [0] * l.number                        # number of stars 
 	for i in range(l.number):
 		A[i] = dist(spaceship , stars[i])  # distance between ith star and spaceship 
 	A.sort()
@@ -15,20 +15,20 @@ def getneareststar(spaceship , stars):
 	return nstar
 
 def distance_betwin_s_nstar(spaceship, stars):    #finding distance between spaceship and nearest star 
-                                                    #and return true if crash otherwise false   
+                                                    #and return false if crash otherwise true   
 	nstar = getneareststar(spaceship , stars)
 	d = dist(spaceship , nstar)
 	if d <= nstar[4]:
-		return True 
+		return False 
 	else:
-		return False 	
+		return True 	
 
 def findcursorposition(spaceship ,stars):         #finding cursors position 
 	
 	nstar = getneareststar(spaceship , stars)       #if curor is on the nearest star return true otherwise false      
 	cursor = canvas.get_mouse_coords()
 	r = getDist(cursor.x, cursor.y, spaceship[0] , spaceship[1])
-	if r <= nstar.r :
+	if r <= nstar.r:
 		return True
 	else:
 		return False	
