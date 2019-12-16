@@ -6,8 +6,8 @@ def getForceProjections (x, y, vx, vy, sx, sy, M ):
 	y += vy * t 
 	r = ((x - sx) * (x - sx) + (y - sy) * (y - sy))**0.5
 	f =  M / (r*r)
-	fx = f / r * (x - sx)
-	fy = f / r * (y - sy)
+	fx = f / r * (-x + sx)
+	fy = f / r * (-y + sy)
 	return fx , fy
 
 

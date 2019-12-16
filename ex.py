@@ -42,14 +42,17 @@ while done:
     k = int(spaceship[0])   
     b = int(spaceship[1] )    
     
-    pygame.draw.circle(window, (0, 0, 0), (k,b) , spaceship[4] )          # drawing spaceship
-                                                                                 # update it all
     for i in range(n):                           # drawing all stars 
         star = stars[i]
-        pygame.draw.circle(window, (0, 0, 0), (star[0],star[1] ), star[4])
+        pygame.draw.circle(window, (0, 0, 0), (star[0],star[1] ), star[4])        
+        pygame.display.update()  
+    
+                                                                                 # update it all
+    
+    pygame.draw.circle(window, (0, 0, 0), (k,b) , spaceship[4] )          # drawing spaceship
     pygame.display.update()  
-    n = getneareststar(spaceship , stars , l)        
-    star = stars[n]                                                 # find nearest star
+    m = getneareststar(spaceship , stars , l)        
+    star = stars[m]                                                 # find nearest star
     F = getForceProjections(spaceship[0],spaceship[1], spaceship[2], spaceship[3], star[0], star[1], star[3] )       # get projections
     coord =  getShipNextState(spaceship[0], spaceship[1], spaceship[2], spaceship[3], F[0], F[1])                  # get new coordinates and velocities
     spaceship[0] = coord[0]
@@ -64,5 +67,5 @@ while done:
             if i.key == pygame.K_LEFT:
                 star[3] += dm                                                # change mass if it is necessary
       
-
     clock.tick(60)
+
