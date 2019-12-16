@@ -27,7 +27,7 @@ class level1 :
     s2 = [100,100,200,5000000,20]    
     s2_image = "cul.png"        
     stars = [s1, s2]     
-    
+    images = [s1_image , s2_image]
     ship = [800,400,-14,-20,5] 
     ship_image = "STARSHIP_1.png"    
     
@@ -52,7 +52,7 @@ class level4 :
          
     s4 = [450,100,0,400,10]         
     s4_image= "black hall.png"         
-    
+    images = [s1_image,s2_image,s3_image,s4_image]
     stars = [s1, s2, s3, s4 ]
     ship = [50,600,70,5,40]
     ship_image ="STARSHIP_1.png"   
@@ -74,7 +74,7 @@ class level5 :
          
     s3 =  [1100,350,25,75,60]
     s3_image = "dzkner.png"
-        
+    images = [s1_image,s2_image,s3_image]    
     stars = [s1 , s2 , s3 ]     
     
     ship =[70,670,100,0,40]
@@ -94,7 +94,7 @@ class  level3:
         
     s2 =  [1000,250,25,75,150]
     s2_image = "kuys.png"    
-        
+    images = [s1_image,s2_image]    
     stars = [s1, s2]
     ship = [100,70,0,90,50]
     ship_image ="STARSHIP_1.png"
@@ -114,14 +114,14 @@ class level6 :
     s2_image ="lion.png"       
          
     s3 = [1300,800,25,75,60]      
-    s3 = "karich.png"     
+    s3_image = "karich.png"     
          
     s4 =[550,200,25,75,50]
     s4_image = "ksherq.png"    
         
     s5 = [1050,200,25,75,60]         
     s5_image = "cul.png"
-
+    images = [s1_image,s2_image,s3_image,s4_image,s5_image]
     stars = [s1 , s2 , s3 ,s4 , s5]
     ship = [70,450,30,20,50] 
     ship_image = "STARSHIP_1.png"

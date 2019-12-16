@@ -8,16 +8,15 @@ def dist(a, b):
 def getneareststar(spaceship , stars ,l):
 	 
 	A = [0] * l.number 
-	nstar = 0                    # number of stars 
+	n = 0                    # number of stars 
 	for i in range(l.number):
-		A[i] = dist(spaceship , stars[i])  # distance between ith star and spaceship 
-		a = A[i] 
-		b = stars[i]
-		A.sort()
-		if a == A[0]:
-			nstar = i
+	
+		
+		if dist(spaceship , stars[i]) <= dist(spaceship , stars[n]):
+			n = i
+		
 
-	return nstar
+	return n
 
 def distance_betwin_s_nstar(spaceship, stars , l):    #finding distance between spaceship and nearest star 
      
