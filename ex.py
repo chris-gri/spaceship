@@ -31,7 +31,10 @@ portal = l.end_portal
 coord = [0] * 4
 
 while done:
+
     for e in pygame.event.get():
+        if e.type == pygame.QUIT:
+            done = False
 
         if passLevel(spaceship , portal ) == 0 or distance_betwin_s_nstar(spaceship, stars , l) == 0:       # game is over 
             done = False
