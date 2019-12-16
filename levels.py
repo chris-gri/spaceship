@@ -20,15 +20,15 @@ class level2 :
 
 class level1 :
     
-    s1 = [800,550,50,200,80] 
+    s1 = [800,550,50,10000,10] 
     s1_image = "oven.png"    
          
         
-    s2 = [100,100,200,500,200]    
+    s2 = [100,100,200,5000,20]    
     s2_image = "cul.png"        
     stars = [s1, s2]     
     
-    ship = [800,400,100*1.41,0,50] 
+    ship = [800,400,-14,-20,5] 
     ship_image = "STARSHIP_1.png"    
     
     end_portal = [1100,450,200,110 ]

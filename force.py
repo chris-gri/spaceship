@@ -7,25 +7,32 @@ def dist(a, b):
 
 def getneareststar(spaceship , stars ,l):
 	 
-	A = [0] * l.number                        # number of stars 
+	A = [0] * l.number 
+	nstar = 0                    # number of stars 
 	for i in range(l.number):
 		A[i] = dist(spaceship , stars[i])  # distance between ith star and spaceship 
-	A.sort()
-	nstar = A[0]
+		a = A[i] 
+		b = stars[i]
+		A.sort()
+		if a == A[0]:
+			nstar = i
+
 	return nstar
 
-def distance_betwin_s_nstar(spaceship, stars):    #finding distance between spaceship and nearest star 
-                                                    #and return false if crash otherwise true   
-	nstar = getneareststar(spaceship , stars)
-	d = dist(spaceship , nstar)
-	if d <= nstar[4]:
+def distance_betwin_s_nstar(spaceship, stars , l):    #finding distance between spaceship and nearest star 
+     
+                                                   #and return false if crash otherwise true   
+	nstar = getneareststar(spaceship , stars , l)
+	n = stars[nstar]
+	d = dist(spaceship , n)
+	if d <= n[4]:
 		return False 
 	else:
 		return True 	
 
-def findcursorposition(spaceship ,stars):         #finding cursors position 
-	
-	nstar = getneareststar(spaceship , stars)       #if curor is on the nearest star return true otherwise false      
+def findcursorposition(spaceship ,stars , l ):         #finding cursors position 
+
+	nstar = getneareststar(spaceship , star , l)       #if curor is on the nearest star return true otherwise false      
 	cursor = canvas.get_mouse_coords()
 	r = getDist(cursor.x, cursor.y, spaceship[0] , spaceship[1])
 	if r <= nstar.r:
@@ -33,14 +40,15 @@ def findcursorposition(spaceship ,stars):         #finding cursors position
 	else:
 		return False	
 
-def addingmass(spaceship , stars , event):         #adding to nearest star if cursor is presed 
+def addingmass(spaceship , stars , l):         #adding to nearest star if cursor is presed 
+
+	nstar = getneareststar(spaceship , stars , l )
+	n = stars[nstar]
+	for i in pygame.event.get():
+		if i.type == pygame.KEYDOWN:
+			if i.key == pygame.K_LEFT:
+				n[3] += dm
 	
-	button = pygame.mouse.get_pressed()
-	nstar = getneareststar(spaceship , stars)
-	if findcursorposition(spaceship , stars) == true and button[0] == true :
-		nstar[3] += dm
-	elif findcursorposition(spaceship , stars) == true and button[1] == true :
-		nstar[3] -= dm 
 
 def passLevel(spaceship , portal ):  #if spaceship rеaches portal return true otherwise false 
 	
