@@ -53,7 +53,8 @@ while p <= 6 :
 
     
         k = int(spaceship[0])   
-        b = int(spaceship[1] )    
+        b = int(spaceship[1])
+            
     
         for i in range(n):                           # drawing all stars 
             star = stars[i]
@@ -62,7 +63,10 @@ while p <= 6 :
     
                                                                                  # update it all
     
-        pygame.draw.circle(window, (0, 0, 0), (k,b) , spaceship[4] )          # drawing spaceship
+        pygame.draw.circle(window, (0, 0, 0), (k,b) , spaceship[4] )     
+             # drawing spaceship
+        pygame.draw.ellipse(window, (0, 120 , 30), (portal[0]+portal[2]/2, portal[1]+portal[3]/2, portal[0]-portal[2]/2, portal[3]/2))
+
         pygame.display.update()  
         m = getneareststar(spaceship , stars , l)        
         star = stars[m]                                                 # find nearest star

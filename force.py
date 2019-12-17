@@ -7,7 +7,6 @@ def dist(a, b):
 
 def getneareststar(spaceship , stars ,l):
 	 
-	A = [0] * l.number 
 	n = 0                    # number of stars 
 	for i in range(l.number):
 	
@@ -33,8 +32,9 @@ def findcursorposition(spaceship ,stars , l ):         #finding cursors position
 
 	nstar = getneareststar(spaceship , star , l)       #if curor is on the nearest star return true otherwise false      
 	cursor = canvas.get_mouse_coords()
-	r = getDist(cursor.x, cursor.y, spaceship[0] , spaceship[1])
-	if r <= nstar.r:
+	star = stars[nstar]
+	r = getDist(cursor.x, cursor.y, star[0] , star[1])
+	if r <= star[4]:
 		return True
 	else:
 		return False	

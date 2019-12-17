@@ -31,7 +31,7 @@ class level1 :
     ship = [800,400,-40,-20,5] 
     ship_image = "STARSHIP_1.png"    
     
-    end_portal = [200,600,200,110]
+    end_portal = [200,600,20,10]
     end_portal_image = "yelqi portal.png"      
     
     number = 2 
