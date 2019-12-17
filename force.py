@@ -50,9 +50,10 @@ def addingmass(spaceship , stars , l):         #adding to nearest star if cursor
 				n[3] += dm
 			
 
-def passLevel(spaceship , portal ):  #if spaceship rеaches portal return true otherwise false 
-	
-	if ((spaceship[0] - portal[0])**2)**0.05 <= (portal[2])/2 and  ((spaceship[1] - portal[1])**2)**0.05 <= (portal[3])/2 :
+def passLevel(l):  #if spaceship rеaches portal return true otherwise false
+	port = l.end_portal
+	ship = l.ship
+	if ship[0] > port[0] and ship[0] < port[2] and ship[1] > port[1] and ship[1] < port[3]:
 		return True
 	else:
 		return False
