@@ -24,7 +24,7 @@ def distance_betwin_s_nstar(spaceship, stars , l):    #finding distance between 
 	nstar = getneareststar(spaceship , stars , l)
 	n = stars[nstar]
 	d = dist(spaceship , n)
-	if d <= n[4]:
+	if d <= n[4] + spaceship[4]:
 		return False 
 	else:
 		return True 	

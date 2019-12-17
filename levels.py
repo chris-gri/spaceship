@@ -24,14 +24,14 @@ class level1 :
     s1_image = "oven.png"    
          
         
-    s2 = [100,100,200,5000000,20]    
+    s2 = [500,100,200,5000000,20]    
     s2_image = "cul.png"        
     stars = [s1, s2]     
     images = [s1_image , s2_image]
-    ship = [800,400,-14,-20,5] 
+    ship = [800,400,-40,-20,5] 
     ship_image = "STARSHIP_1.png"    
     
-    end_portal = [1100,450,200,110 ]
+    end_portal = [200,600,200,110]
     end_portal_image = "yelqi portal.png"      
     
     number = 2 
@@ -131,3 +131,5 @@ class level6 :
          
     number = 5
     
+
+levels = [level1 , level2 , level3 , level4 , level5 , level6]    
