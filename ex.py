@@ -8,7 +8,7 @@ import math
 
 pygame.init()
 
-window = pygame.display.set_mode((1000, 1000))
+window = pygame.display.set_mode()
 
 screen = pygame.Surface((1000,1000))
 
@@ -22,7 +22,7 @@ background_image = pygame.image.load("background.png").convert()
 t = 100
 
 done = True
-dm =1
+dm =100000
 
 
 
@@ -78,10 +78,15 @@ while p <= 6 :
         spaceship[3] = coord[3]
     
     
-        for i in pygame.event.get():
-            if i.type == pygame.KEYDOWN:
-                if i.key == pygame.K_LEFT:
-                    star[3] += dm                                                # change mass if it is necessary
+        if findcursorposition(spaceship, stars, l):
+            for i in pygame.event.get():
+                if i.type == pygame.MOUSEBUTTONDOWN:
+                    if i.button == 1:
+                        star[3] += dm
+                        print(star[3])
+                    elif i.button == 3:
+                        star[3] -= dm
+                        print(star[3])                                               # change mass if it is necessary
       
         clock.tick(60)
         p +=1

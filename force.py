@@ -1,3 +1,4 @@
+import pygame
 def getDist(x1, y1, x2, y2):
 	
 	return ((y2-y1)**2 + (x2-x1)**2)**0.5
@@ -30,11 +31,11 @@ def distance_betwin_s_nstar(spaceship, stars , l):    #finding distance between 
 
 def findcursorposition(spaceship ,stars , l ):         #finding cursors position 
 
-	nstar = getneareststar(spaceship , star , l)       #if curor is on the nearest star return true otherwise false      
-	cursor = canvas.get_mouse_coords()
-	star = stars[nstar]
-	r = getDist(cursor.x, cursor.y, star[0] , star[1])
-	if r <= star[4]:
+	nstar = getneareststar(spaceship , stars , l)       #if curor is on the nearest star return true otherwise false      
+	n = stars[nstar]
+	cursor = pygame.mouse.get_pos()
+	r = dist(cursor, n)
+	if r <= n[4]:
 		return True
 	else:
 		return False	
@@ -47,7 +48,7 @@ def addingmass(spaceship , stars , l):         #adding to nearest star if cursor
 		if i.type == pygame.KEYDOWN:
 			if i.key == pygame.K_LEFT:
 				n[3] += dm
-	
+			
 
 def passLevel(spaceship , portal ):  #if spaceship rеaches portal return true otherwise false 
 	
