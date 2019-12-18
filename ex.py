@@ -15,6 +15,9 @@ window = pygame.display.set_mode()
 
 screen = pygame.Surface((2000,1000))
 
+f1 = pygame.font.Font('FagoCoTf-Black.otf', 100)
+text1 = f1.render('Game Over', 0, (255, 255, 255))
+
 clock = pygame.time.Clock()
 
 background_image = pygame.image.load("background.png").convert()
@@ -80,30 +83,40 @@ sound.play(-1)
 game = Menu(clauses)
 game.menu()
 
-
+levels = [level1 , level2 , level3 , level4 , level5 , level6]
 t = 100
-done = True
 dm =100000
+dr = 1
 coord = [0] * 4
 p = 0
-
-while p <= 6 :
-    
+done = True
+finish = True
+while p <= 5 :
     l = levels[p]
     spaceship = l.ship
     stars = l.stars
     n = l.number
     portal = l.end_portal
-    while done:
+    done = True
+    while done and finish :
+        finish = True
         Dist = dist(spaceship, portal)
         for e in pygame.event.get():
            if e.type == pygame.QUIT:
-                done = False
+                finish = False
 
-        if Dist < portal[2]:      # game is over
+        if Dist < portal[2] + spaceship[4]:
+                # game is over
             done = False
-        if distance_betwin_s_nstar(spaceship, stars , l) == 0: 
-            done = False
+            p += 1
+            print(p)
+        if distance_betwin_s_nstar(spaceship, stars , l) == 0:
+            print("Game over")
+            pygame.draw.circle(window, (255, 0, 0), (700, 500), 400)
+            window.blit(text1,(400, 300))
+            pygame.display.update()
+            time.sleep(5)
+            sys.exit()
 
         
         window.blit(screen, (0, 0))
@@ -115,8 +128,8 @@ while p <= 6 :
     
         for i in range(n):                           # drawing all stars 
             star = stars[i]
-            pygame.draw.circle(window, (0, 0, 0), (star[0],star[1] ), star[4])        
-            pygame.display.update()  
+            pygame.draw.circle(window, (32, 178, 170), (star[0],star[1] ), star[4])
+            pygame.display.update()
     
                                                                                  # update it all
     
@@ -124,8 +137,8 @@ while p <= 6 :
              # drawing spaceship
         pygame.draw.circle(window, (0, 120 , 30), (portal[0], portal[1]),  portal[2])
 
-        pygame.display.update()  
-        m = getneareststar(spaceship , stars , l)        
+        pygame.display.update()
+        m = getneareststar(spaceship, stars, l)
         star = stars[m]                                                 # find nearest star
         F = getForceProjections(spaceship[0],spaceship[1], spaceship[2], spaceship[3], star[0], star[1], star[3] )       # get projections
         coord = getShipNextState(spaceship[0], spaceship[1], spaceship[2], spaceship[3], F[0], F[1])                  # get new coordinates and velocities
@@ -140,10 +153,12 @@ while p <= 6 :
                 if i.type == pygame.MOUSEBUTTONDOWN:
                     if i.button == 1:
                         star[3] += dm
+                        star[4] += dr
                         print(star[3])
                     elif i.button == 3:
                         star[3] -= dm
+                        star[4] -= dr
                         print(star[3])                                               # change mass if it is necessary
       
         clock.tick(60)
-        p += 1
+
