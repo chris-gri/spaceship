@@ -25,9 +25,9 @@ def distance_betwin_s_nstar(spaceship, stars , l):    #finding distance between 
 	n = stars[nstar]
 	d = dist(spaceship , n)
 	if d <= n[4] + spaceship[4]:
-		return False 
+		return False
 	else:
-		return True 	
+		return True	
 
 def findcursorposition(spaceship ,stars , l ):         #finding cursors position 
 

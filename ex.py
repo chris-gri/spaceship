@@ -16,7 +16,7 @@ window = pygame.display.set_mode()
 screen = pygame.Surface((2000,1000))
 
 
-f1 = pygame.font.Font('FagoCoTf-Black.otf', 100)
+f1 = pygame.font.Font('FagoCoTf-Bold.otf', 100)
 text1 = f1.render('Game Over', 0, (255, 255, 255))
 
 
@@ -97,24 +97,26 @@ dm =100000
 dr = 1
 coord = [0] * 4
 p = 0
-done = True
-finish = True
-while p <= 5 :
 
+
+while p <= 5 :
+    
+    done = True
     l = levels[p]
-    spaceship = l.ship
+    spaceship = l.ship[:]
     stars = l.stars
     n = l.number
     portal = l.end_portal
-    done = True
-
-    while done and finish :
-        finish = True
+    
+    
+    click = 0 
+    while done :
+        
 
         Dist = dist(spaceship, portal)
         for e in pygame.event.get():
            if e.type == pygame.QUIT:
-                finish = False
+                sys.exit()
 
 
         if Dist < portal[2] + spaceship[4]:
@@ -122,14 +124,12 @@ while p <= 5 :
 
             done = False
             p += 1
+            background_image = pygame.image.load("background.png").convert()
             print(p)
         if distance_betwin_s_nstar(spaceship, stars , l) == 0:
-            print("Game over")
-            pygame.draw.circle(window, (255, 0, 0), (700, 500), 400)
-            window.blit(text1,(400, 300))
-            pygame.display.update()
-            time.sleep(5)
-            sys.exit()
+        
+            background_image = pygame.image.load("background.png").convert()
+            done = False
 
         
         window.blit(screen, (0, 0))
@@ -138,6 +138,11 @@ while p <= 5 :
     
         k = int(spaceship[0])   
         b = int(spaceship[1])
+        xy = ((spaceship[2])**2 + (spaceship[3])**2 )**0.5
+        ux = spaceship[2]/xy
+        uy = spaceship[3]/xy
+
+
     
         for i in range(n):                           # drawing all stars 
             star = stars[i]
@@ -150,6 +155,8 @@ while p <= 5 :
              # drawing spaceship
 
         pygame.draw.circle(window, (0, 120 , 30), (portal[0], portal[1]),  portal[2])
+        pygame.draw.line(window, (255, 255 , 0), (spaceship[0], spaceship[1]) , (spaceship[0]+1.6 *ux * xy**0.6 ,spaceship[1]+1.6* uy * xy**0.6))
+        pygame.draw.line(background_image, (255 , 102 , 0), (spaceship[0], spaceship[1]), (spaceship[0]+ux,spaceship[1]+ uy) )
 
         pygame.display.update()
         m = getneareststar(spaceship, stars, l)
@@ -168,11 +175,12 @@ while p <= 5 :
                     if i.button == 1:
                         star[3] += dm
                         star[4] += dr
-                        print(star[3])
+                        click += 1 
                     elif i.button == 3:
                         star[3] -= dm
-                        star[4] -= dr
-                        print(star[3])                                               # change mass if it is necessary
+                        if star[4] >= 4:
+                            star[4] -= dr
+                        click +=1                                              # change mass if it is necessary
       
         clock.tick(60)
 

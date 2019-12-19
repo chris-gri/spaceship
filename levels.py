@@ -20,7 +20,7 @@ class level2 :
 
 class level1 :
     
-    s1 = [800,550,50,1000000,10] 
+    s1 = [800,550,50,1000000,20] 
     s1_image = "oven.png"    
          
         
@@ -102,7 +102,7 @@ class  level3:
     end_portal = [1450,400,15,30]
     end_portal_image = "end_portal_vertical_100x200.png"  
 
-    number = 3
+    number = 2
 
 
 class level6 :

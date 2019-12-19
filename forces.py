@@ -20,3 +20,10 @@ def  getShipNextState(x, y, Vx, Vy, fx, fy):    # Vx and vx are different
 	return x, y, vx, vy 
 
 
+def  getShipNextState_1(x, y, Vx, Vy, fx, fy):    # Vx and vx are different 
+                                                 #give him everithig and he will give you what you need 
+	x = x + Vx * t + fx * 1.01**2 *t * t / 2
+	y = y + Vy * t + fy * 1.01**2 *t * t / 2
+	vx =  Vx + 1.01 *fx * t
+	vy =  Vy +  1.01 * fy * t
+	return x, y, vx, vy 
