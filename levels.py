@@ -1,7 +1,7 @@
 class level2 :
    
         
-    s1 =  [ 250,650,50,200, 80 ]                                     #   for stars     4 mass 1 x  2 y 3 l 5 r 
+    s1 =  [ 250,650,50,200, 80 ]                                     #   for stars     4 mass 1 x  2 y 3 a 5 r 
     s1_image = "bro.png"       
             
         
@@ -41,10 +41,10 @@ class level1 :
 class level4 :
 
     
-    s1 = [200,800,25,1250000,80]
+    s1 = [200,800,30,1250000,80]
     s1_image ="ksherq.png"   
         
-    s2 = [800,400,25,750000,50]    
+    s2 = [800,400,30,750000,50]    
     s2_image = "karich.png"    
              
          
@@ -66,11 +66,11 @@ class level4 :
 class level5 :
   
     
-    s1 =   [ 600,50,25,750000,60]                                   
+    s1 =   [ 600,50,25,750000,30]                                   
     s1_image = "aycyexdjyur.png"        
         
         
-    s2 =  [320,250,25,750000,50]
+    s2 =  [320,250,25,750000,30]
     s2_image ="jrhos.png"     
          
     s3 =  [1100,350,25,750000,60]

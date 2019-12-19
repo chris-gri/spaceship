@@ -5,9 +5,11 @@ from forces import *
 from levels import *
 import time
 import math
+import sys
+import random 
 from pygame import mixer
 mixer.init()
-import sys
+
 
 pygame.init()
 
@@ -23,7 +25,12 @@ text1 = f1.render('Game Over', 0, (255, 255, 255))
 clock = pygame.time.Clock()
 
 background_image = pygame.image.load("background.png").convert()
-
+image1 = pygame.image.load("planet1.png")
+image2 = pygame.image.load("planet2.png")
+image3 = pygame.image.load("planet3.png")
+image4 = pygame.image.load("planet4.png")
+image5 = pygame.image.load("planet5.png")
+images = [image1 , image2, image3, image4 , image5,image1 , image2, image3, image4 , image5]
 
 pygame.display.set_caption('Space Oddity')
 
@@ -122,12 +129,12 @@ while p <= 5 :
 
 
         if Dist < portal[2] + spaceship[4]:
-                # game is over
 
             done = False
             p += 1
             background_image = pygame.image.load("background.png").convert()
             print(p)
+        
         if distance_betwin_s_nstar(spaceship, stars , l) == 0:
         
             background_image = pygame.image.load("background.png").convert()
@@ -148,14 +155,16 @@ while p <= 5 :
     
         for i in range(n):                           # drawing all stars 
             star = stars[i]
-            pygame.draw.circle(window, (32, 178, 170), (star[0],star[1] ), star[4])
+            image = images[i]
+            image = pygame.transform.scale(image, (star[2],star[2]))
+            imageT = image.get_rect(center=(star[0],star[1]))
+            window.blit(image, imageT)
     
         image = l.ship_image
         imageI = pygame.image.load(image)
         imageI = pygame.transform.scale(imageI, (40, 40))
-
-        
         imageT = imageI.get_rect(center=(spaceship[0],spaceship[1]))
+
 
         window.blit(window, (0, 0))
         window.blit(imageI, imageT)
@@ -164,7 +173,7 @@ while p <= 5 :
              
              # drawing spaceship
         pygame.draw.circle(window, (0, 120 , 30), (portal[0], portal[1]),  portal[2])
-        pygame.draw.line(window, (255, 255 , 0), (spaceship[0], spaceship[1]) , (spaceship[0]+1.6 *ux * xy**0.6 ,spaceship[1]+1.6* uy * xy**0.6))
+        pygame.draw.line(window, (255, 255 , 0), (spaceship[0], spaceship[1]) , (spaceship[0]+3 *ux * xy**0.6 ,spaceship[1]+3* uy * xy**0.6))
         pygame.draw.line(background_image, (255 , 102 , 0), (spaceship[0], spaceship[1]), (spaceship[0]+ux,spaceship[1]+ uy) )
 
         pygame.display.update()
@@ -184,11 +193,13 @@ while p <= 5 :
                     if i.button == 1:
                         star[3] += dm
                         star[4] += dr
+                        star[2] += 5
                         click += 1 
                     elif i.button == 3:
                         star[3] -= dm
-                        if star[4] >= 4:
+                        if star[4] >= 20:
                             star[4] -= dr
+                            star[2] -= 5
                         click +=1                                              # change mass if it is necessary
       
         clock.tick(60)
