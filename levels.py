@@ -10,7 +10,7 @@ class level2 :
     
     stars = [s1 , s2]         
                                                                                       # for ships 1- x 2-y 3-vx 4 - vy  5-r 
-    ship =  [250,500,100*1.41,0,50]
+    ship =  [250,500,15,0,50]
     ship_image = "STARSHIP_1.png"   
     
     end_portal = [1450,400,150,300 ]
@@ -28,7 +28,7 @@ class level1 :
     s2_image = "cul.png"        
     stars = [s1, s2]     
     images = [s1_image , s2_image]
-    ship = [800,400,-40,-20,5] 
+    ship = [800,400,-40,-20,10] 
     ship_image = "STARSHIP_1.png"    
     
 

@@ -16,7 +16,7 @@ window = pygame.display.set_mode()
 screen = pygame.Surface((2000,1000))
 
 
-f1 = pygame.font.Font('FagoCoTf-Bold.otf', 100)
+f1 = pygame.font.Font('FagoCoTf-Black.otf', 100)
 text1 = f1.render('Game Over', 0, (255, 255, 255))
 
 
@@ -104,9 +104,11 @@ while p <= 5 :
     done = True
     l = levels[p]
     spaceship = l.ship[:]
+    stars = l.stars[:]
     stars = l.stars
     n = l.number
     portal = l.end_portal
+    ship_image = l.ship_image
     
     
     click = 0 
@@ -147,13 +149,20 @@ while p <= 5 :
         for i in range(n):                           # drawing all stars 
             star = stars[i]
             pygame.draw.circle(window, (32, 178, 170), (star[0],star[1] ), star[4])
-            pygame.display.update()
     
-                                                                                 # update it all
-    
-        pygame.draw.circle(window, (0, 0, 0), (k,b) , spaceship[4] )     
-             # drawing spaceship
+        image = l.ship_image
+        imageI = pygame.image.load(image)
+        imageI = pygame.transform.scale(imageI, (40, 40))
 
+        
+        imageT = imageI.get_rect(center=(spaceship[0],spaceship[1]))
+
+        window.blit(window, (0, 0))
+        window.blit(imageI, imageT)
+       
+    
+             
+             # drawing spaceship
         pygame.draw.circle(window, (0, 120 , 30), (portal[0], portal[1]),  portal[2])
         pygame.draw.line(window, (255, 255 , 0), (spaceship[0], spaceship[1]) , (spaceship[0]+1.6 *ux * xy**0.6 ,spaceship[1]+1.6* uy * xy**0.6))
         pygame.draw.line(background_image, (255 , 102 , 0), (spaceship[0], spaceship[1]), (spaceship[0]+ux,spaceship[1]+ uy) )
