@@ -51,7 +51,7 @@ states = [(100, 50, u'Level 1', (25, 25, 112), (99, 184, 255), 0),
           (180, 680, 'Level 10', (25, 25, 112), (99, 184, 255), 9),
           (390, 365,'Menu', (25, 25, 112), (99, 184, 255), 10)]
 
-levels = [level1 , level2 , level3 , level4 , level5 , level6]
+
 t = 100
 dm =100000
 dr = 1
@@ -61,7 +61,7 @@ p = 0
 def chooselevel(p):
     background_image = pygame.image.load("background.png").convert()
 
-    while p <= 5:
+    while p <= 9:
         done = True
         l = levels[p]
         spaceship = l.ship[:]
@@ -89,9 +89,11 @@ def chooselevel(p):
                 background_image = pygame.image.load("background.png").convert()
                 for i in range(n):
                     m = l.m
+                    star = stars[i]
                     star[3] = m[i]
                     star[2] = 50
                     star[4] = 20
+
 
                 done = False
 
@@ -122,7 +124,7 @@ def chooselevel(p):
             # drawing spaceship
             pygame.draw.circle(window, (0, 120, 30), (portal[0], portal[1]), portal[2])
             pygame.draw.line(window, (255, 255, 0), (spaceship[0], spaceship[1]),
-                             (spaceship[0] + 3 * ux * xy ** 0.6, spaceship[1] + 3 * uy * xy ** 0.6))
+                             (spaceship[0] + 3 * ux * xy ** 0.6, spaceship[1] + 3 * uy * xy ** 0.6), 3)
             pygame.draw.line(background_image, (255, 102, 0), (spaceship[0], spaceship[1]),
                              (spaceship[0] + ux, spaceship[1] + uy))
 
