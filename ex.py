@@ -80,11 +80,19 @@ def chooselevel(p):
                     sys.exit()
 
             if Dist < portal[2] + spaceship[4]:
+                background_image = pygame.image.load("background.png").convert()
                 done = False
                 p += 1
                 print(p)
 
             if distance_betwin_s_nstar(spaceship, stars, l) == 0:
+                background_image = pygame.image.load("background.png").convert()
+                for i in range(n):
+                    m = l.m
+                    star[3] = m[i]
+                    star[2] = 50
+                    star[4] = 20
+
                 done = False
 
             window.blit(screen, (0, 0))
